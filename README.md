@@ -6,7 +6,7 @@
 
 `启动页 -> 准备页 -> 3 秒倒计时 -> 关卡核心页 -> 结算页`
 
-系统会先通过预处理脚本对教学视频提取标准姿态模板与关键得分帧；运行时左侧播放示范视频，右侧实时显示摄像头骨架，视频到达关键得分帧时自动执行姿态匹配评分，并在页面中触发分数、边框闪烁、提示语和连击动效。
+系统会先通过预处理脚本对教学视频提取标准姿态模板与关键得分帧；运行时左侧播放示范视频，右侧实时显示摄像头骨架，视频到达关键得分帧时按模板执行姿态匹配评分，并在页面中触发分数、边框闪烁、提示语和连击动效。
 
 ## 项目结构
 
@@ -17,6 +17,7 @@
 - `preprocess_video.py`：教学视频预处理脚本，生成模板与关键帧配置
 - `config.py`：统一管理路径、阈值、配色、字体与运行参数
 - `requirements.txt`：依赖列表
+- `RhythmMotionCV_节奏运动跟随小游戏.ipynb`：本地 Jupyter Notebook 版运行与分析流程
 - `data/generated/standard_pose_templates.json`：标准姿态模板输出
 - `data/generated/score_frames.json`：关键得分帧配置输出
 - `data/generated/thumbnail.jpg`：准备页缩略图输出
@@ -39,22 +40,16 @@ pip install -r requirements.txt
 
 首次运行前，必须先生成标准模板和关键得分帧配置。
 
-### 方式 1：基于旧动作脚本快速生成样例数据
+### 方式 1：基于旧动作脚本快速生成关键帧
 
 ```powershell
-python preprocess_video.py --video 跟练视频.MP4 --seed-script 跟练动作脚本.json --accept-seed
+python preprocess_video.py --video 跟练视频.MP4 --seed-script 跟练动作脚本.json
 ```
 
-### 方式 2：按固定时间间隔自动抽取关键帧
+### 方式 2：手动标记关键得分帧
 
 ```powershell
-python preprocess_video.py --video 跟练视频.MP4 --auto-interval-sec 8 --accept-seed
-```
-
-### 方式 3：手动标记关键得分帧
-
-```powershell
-python preprocess_video.py --video 跟练视频.MP4 --auto-interval-sec 8 --manual-review
+python preprocess_video.py --video 跟练视频.MP4 --manual-review
 ```
 
 手动标记界面快捷键：
@@ -64,6 +59,12 @@ python preprocess_video.py --video 跟练视频.MP4 --auto-interval-sec 8 --manu
 - `M`：将当前帧标记为关键帧或取消关键帧
 - `S`：保存并退出
 - `ESC / Q`：取消退出
+
+如果想在旧脚本基础上微调，可以组合使用：
+
+```powershell
+python preprocess_video.py --video 跟练视频.MP4 --seed-script 跟练动作脚本.json --manual-review
+```
 
 预处理完成后，会自动生成以下文件：
 
@@ -113,6 +114,18 @@ python rhythm_motion_game.py
 - 未检测到人体：关键帧按未达标处理，同时提示“保持全身入镜”
 - 关键点可见性不足：不计分并提示用户调整站位
 - 模板文件缺失：准备页按钮会禁用，并提示先运行预处理脚本
+
+## Notebook 版本
+
+项目附带一份本地可运行的 Jupyter Notebook：`RhythmMotionCV_节奏运动跟随小游戏.ipynb`。
+
+Notebook 版本适合做以下事情：
+
+- 检查视频和关键帧配置是否一致
+- 离线验证模板匹配分数
+- 用本机摄像头做实时关键帧跟练
+
+建议在本地 Jupyter 环境中运行，不建议在 Colab 中做实时摄像头跟练。
 
 ## 可调配置
 

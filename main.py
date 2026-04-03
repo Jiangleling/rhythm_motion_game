@@ -410,7 +410,7 @@ class MainWindow(QMainWindow):
         return best_sample, best_delta_ms
 
     def _score_keyframe(self, keyframe_index: int, keyframe: Any) -> None:
-        """在关键得分帧上执行姿态匹配评分。"""
+        """在关键得分帧上执行模板匹配评分。"""
 
         self.game_page.highlight_marker(keyframe_index)
         now_time = time.perf_counter()
@@ -426,6 +426,9 @@ class MainWindow(QMainWindow):
         if sample is None or delay_ms > SCORE_RULES.max_sample_delay_ms:
             self.current_combo = 0
             detail_text = "采样延迟过大，请保持镜头稳定并继续跟练"
+        elif keyframe.template_vector is None:
+            self.current_combo = 0
+            detail_text = "关键帧模板缺失，请先重新运行预处理。"
         elif not sample.get("visible", False):
             self.current_combo = 0
             detail_text = "未检测到完整人体，请退后并保持全身入镜"

@@ -3,12 +3,12 @@
 
 功能:
 1. 读取教学视频并提取标准姿态模板
-2. 支持种子关键帧 + OpenCV 手动复核标记
+2. 支持旧动作脚本导入或 OpenCV 手动标记关键帧
 3. 生成运行时直接可读的模板文件与关键帧配置文件
 
 示例:
     python preprocess_video.py --video 跟练视频.MP4 --manual-review
-    python preprocess_video.py --video 跟练视频.MP4 --seed-script 跟练动作脚本.json --accept-seed
+    python preprocess_video.py --video 跟练视频.MP4 --seed-script 跟练动作脚本.json
 """
 
 from __future__ import annotations
@@ -68,20 +68,9 @@ def parse_arguments() -> argparse.Namespace:
         help="可选，读取旧动作脚本并按区间中点生成关键帧种子",
     )
     parser.add_argument(
-        "--auto-interval-sec",
-        type=float,
-        default=0.0,
-        help="可选，按固定秒数间隔自动生成关键帧种子，例如 8 表示每 8 秒一个关键帧",
-    )
-    parser.add_argument(
         "--manual-review",
         action="store_true",
         help="使用 OpenCV 窗口手动复核关键帧，支持增删标记",
-    )
-    parser.add_argument(
-        "--accept-seed",
-        action="store_true",
-        help="直接接受种子关键帧，不进入手动复核界面，便于自动化生成样例数据",
     )
     parser.add_argument(
         "--search-window-sec",
@@ -123,34 +112,6 @@ def load_seed_keyframes(seed_script_path: Path, fps_value: float) -> List[Dict[s
             }
         )
     return seed_frames
-
-
-def create_interval_seed_keyframes(
-    video_duration_ms: int,
-    fps_value: float,
-    interval_seconds: float,
-) -> List[Dict[str, Any]]:
-    """按固定间隔自动生成关键帧种子。"""
-
-    if interval_seconds <= 0 or fps_value <= 0:
-        return []
-
-    duration_seconds = video_duration_ms / 1000.0
-    current_second = interval_seconds
-    keyframes: List[Dict[str, Any]] = []
-    index = 1
-    while current_second < duration_seconds:
-        keyframes.append(
-            {
-                "frame_index": int(round(current_second * fps_value)),
-                "label": "关键帧 {:02d}".format(index),
-                "action": "default",
-                "correction_hint": ACTION_HINT_LIBRARY["default"],
-            }
-        )
-        current_second += interval_seconds
-        index += 1
-    return keyframes
 
 
 def manual_review_keyframes(
@@ -436,24 +397,16 @@ def main() -> None:
     seed_keyframes: List[Dict[str, Any]] = []
     if arguments.seed_script:
         seed_keyframes.extend(load_seed_keyframes(arguments.seed_script.resolve(), fps_value))
-    if arguments.auto_interval_sec > 0:
-        seed_keyframes.extend(
-            create_interval_seed_keyframes(
-                video_duration_ms=int(metadata["duration_ms"]),
-                fps_value=fps_value,
-                interval_seconds=float(arguments.auto_interval_sec),
-            )
-        )
 
     unique_map: Dict[int, Dict[str, Any]] = {}
     for item in seed_keyframes:
         unique_map[int(item["frame_index"])] = item
     selected_keyframes = sorted(unique_map.values(), key=lambda item: int(item["frame_index"]))
 
-    if arguments.manual_review and not arguments.accept_seed:
+    if arguments.manual_review:
         selected_keyframes = manual_review_keyframes(video_path, selected_keyframes, fps_value)
     elif not selected_keyframes:
-        raise RuntimeError("没有可用关键帧。请传入 --seed-script、--auto-interval-sec 或开启 --manual-review。")
+        raise RuntimeError("没有可用关键帧。请传入 --seed-script 或开启 --manual-review。")
 
     thumbnail_path = extract_thumbnail(video_path, arguments.thumbnail_output.resolve())
     if thumbnail_path is None:

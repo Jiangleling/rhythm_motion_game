@@ -420,14 +420,17 @@ def load_level_bundle(
         template_data = template_map.get(template_id)
         if not template_data:
             continue
-        template_vector = np.array(template_data.get("template_vector", []), dtype=np.float32)
+
+        raw_vector = template_data.get("template_vector", [])
+        template_vector = np.array(raw_vector, dtype=np.float32)
         if template_vector.size != len(CORE_JOINTS) * 2:
             continue
+
         keyframes.append(
             KeyframeRecord(
                 template_id=template_id,
                 timestamp_ms=int(item.get("timestamp_ms", 0)),
-                frame_index=int(item.get("frame_index", 0)),
+                frame_index=int(item.get("frame_index", template_data.get("frame_index", 0))),
                 label=str(item.get("label", "关键帧")),
                 action=str(item.get("action", "default")),
                 correction_hint=str(item.get("correction_hint", "")),
