@@ -42,8 +42,8 @@ from PyQt5.QtWidgets import (
     QWidget,
 )
 
-from config import COLORS, FONTS
-from pose_utils import ms_to_timestamp
+from app.config import COLORS, FONTS
+from app.pose_utils import ms_to_timestamp
 
 
 def qcolor(color_hex: str, alpha: int = 255) -> QColor:

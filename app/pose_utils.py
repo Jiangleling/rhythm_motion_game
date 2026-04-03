@@ -16,7 +16,7 @@ import cv2
 import mediapipe as mp
 import numpy as np
 
-from config import ACTION_HINT_LIBRARY, COLORS, LEVEL_INFO_FALLBACK, PATHS, SCORE_RULES
+from app.config import ACTION_HINT_LIBRARY, COLORS, LEVEL_INFO_FALLBACK, PATHS, SCORE_RULES
 
 
 _MP_POSE = mp.solutions.pose
@@ -359,6 +359,24 @@ def load_json(json_path: Path) -> Dict[str, Any]:
         return json.load(file)
 
 
+def resolve_resource_path(raw_path: Any, default_path: Path) -> Path:
+    """兼容旧 JSON 中的绝对路径，并优先回退到当前正式资源位置。"""
+
+    if raw_path:
+        candidate = Path(str(raw_path))
+        if candidate.is_absolute():
+            if candidate.exists():
+                return candidate.resolve()
+            return default_path.resolve()
+
+        for base_dir in (default_path.parent, PATHS.video_path.parent, Path.cwd()):
+            resolved = (base_dir / candidate).resolve()
+            if resolved.exists():
+                return resolved
+
+    return default_path.resolve()
+
+
 def build_template_payload(
     video_path: Path,
     thumbnail_path: Path,
@@ -446,11 +464,15 @@ def load_level_bundle(
     keyframes.sort(key=lambda record: record.timestamp_ms)
     audio_path = PATHS.audio_path if PATHS.audio_path.exists() else None
     return LevelBundle(
-        video_path=Path(score_payload.get("video_path", template_payload.get("video_path", ""))).resolve(),
+        video_path=resolve_resource_path(
+            score_payload.get("video_path", template_payload.get("video_path", "")),
+            PATHS.video_path,
+        ),
         audio_path=audio_path,
-        thumbnail_path=Path(
-            score_payload.get("thumbnail_path", template_payload.get("thumbnail_path", PATHS.thumbnail_path))
-        ).resolve(),
+        thumbnail_path=resolve_resource_path(
+            score_payload.get("thumbnail_path", template_payload.get("thumbnail_path", PATHS.thumbnail_path)),
+            PATHS.thumbnail_path,
+        ),
         video_duration_ms=int(score_payload.get("video_duration_ms", 0)),
         action_name=str(score_payload.get("action_name", LEVEL_INFO_FALLBACK["action_name"])),
         subtitle=str(score_payload.get("subtitle", LEVEL_INFO_FALLBACK["subtitle"])),

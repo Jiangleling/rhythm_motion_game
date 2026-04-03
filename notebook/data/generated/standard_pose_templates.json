@@ -1,6 +1,6 @@
 {
-  "video_path": "E:\\OneDrive\\CV\\cv_Project\\CV_PROJECT\\RhythmMotionCV\\跟练视频.MP4",
-  "thumbnail_path": "E:\\OneDrive\\CV\\cv_Project\\CV_PROJECT\\RhythmMotionCV\\data\\generated\\thumbnail.jpg",
+  "video_path": "跟练视频.MP4",
+  "thumbnail_path": "data/generated/thumbnail.jpg",
   "joint_names": [
     "left_shoulder",
     "right_shoulder",

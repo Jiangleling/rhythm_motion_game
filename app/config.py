@@ -12,8 +12,10 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 
-BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
+APP_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = APP_DIR.parent
+NOTEBOOK_DIR = PROJECT_ROOT / "notebook"
+DATA_DIR = NOTEBOOK_DIR / "data"
 GENERATED_DIR = DATA_DIR / "generated"
 
 
@@ -70,9 +72,9 @@ class FontConfig:
 class PathConfig:
     """项目关键路径。"""
 
-    video_path: Path = BASE_DIR / "跟练视频.MP4"
+    video_path: Path = NOTEBOOK_DIR / "跟练视频.MP4"
     audio_path: Path = GENERATED_DIR / "audio.wav"
-    legacy_script_path: Path = BASE_DIR / "跟练动作脚本.json"
+    legacy_script_path: Path = NOTEBOOK_DIR / "跟练动作脚本.json"
     standard_template_path: Path = GENERATED_DIR / "standard_pose_templates.json"
     score_frame_path: Path = GENERATED_DIR / "score_frames.json"
     thumbnail_path: Path = GENERATED_DIR / "thumbnail.jpg"
@@ -167,5 +169,6 @@ LEVEL_INFO_FALLBACK = {
 def ensure_runtime_directories() -> None:
     """确保运行和预处理需要的输出目录存在。"""
 
+    NOTEBOOK_DIR.mkdir(parents=True, exist_ok=True)
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     GENERATED_DIR.mkdir(parents=True, exist_ok=True)

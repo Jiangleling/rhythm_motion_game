@@ -10,18 +10,22 @@
 
 ## 项目结构
 
-- `main.py`：主程序入口与流程控制器
+- `app/`：正式应用源码目录，包含主程序、配置、UI 页面、姿态工具和视频播放器
+- `tools/preprocess_video.py`：预处理实现脚本
+- `notebook/`：Notebook 正式目录，包含 Notebook 文件、教学视频、动作脚本和 `data/generated/` 产物
+- `main.py`：根目录兼容启动入口，内部转发到 `app/main.py`
+- `preprocess_video.py`：根目录兼容预处理入口，内部转发到 `tools/preprocess_video.py`
 - `rhythm_motion_game.py`：兼容入口，等价于运行 `main.py`
-- `ui_pages.py`：四个页面、切换动画、计分显示、反馈动效
-- `pose_utils.py`：姿态检测、关键点归一化、余弦相似度评分、模板读写
-- `preprocess_video.py`：教学视频预处理脚本，生成模板与关键帧配置
-- `config.py`：统一管理路径、阈值、配色、字体与运行参数
 - `requirements.txt`：依赖列表
-- `RhythmMotionCV_节奏运动跟随小游戏.ipynb`：本地 Jupyter Notebook 版运行与分析流程
-- `data/generated/standard_pose_templates.json`：标准姿态模板输出
-- `data/generated/score_frames.json`：关键得分帧配置输出
-- `data/generated/thumbnail.jpg`：准备页缩略图输出
-- `跟练视频.MP4`：样例教学视频
+
+当前正式资源位置：
+
+- `notebook/RhythmMotionCV_节奏运动跟随小游戏.ipynb`
+- `notebook/跟练视频.MP4`
+- `notebook/跟练动作脚本.json`
+- `notebook/data/generated/standard_pose_templates.json`
+- `notebook/data/generated/score_frames.json`
+- `notebook/data/generated/thumbnail.jpg`
 
 ## 环境要求
 
@@ -43,13 +47,13 @@ pip install -r requirements.txt
 ### 方式 1：基于旧动作脚本快速生成关键帧
 
 ```powershell
-python preprocess_video.py --video 跟练视频.MP4 --seed-script 跟练动作脚本.json
+python preprocess_video.py --video notebook/跟练视频.MP4 --seed-script notebook/跟练动作脚本.json
 ```
 
 ### 方式 2：手动标记关键得分帧
 
 ```powershell
-python preprocess_video.py --video 跟练视频.MP4 --manual-review
+python preprocess_video.py --video notebook/跟练视频.MP4 --manual-review
 ```
 
 手动标记界面快捷键：
@@ -63,14 +67,15 @@ python preprocess_video.py --video 跟练视频.MP4 --manual-review
 如果想在旧脚本基础上微调，可以组合使用：
 
 ```powershell
-python preprocess_video.py --video 跟练视频.MP4 --seed-script 跟练动作脚本.json --manual-review
+python preprocess_video.py --video notebook/跟练视频.MP4 --seed-script notebook/跟练动作脚本.json --manual-review
 ```
 
 预处理完成后，会自动生成以下文件：
 
-- `data/generated/standard_pose_templates.json`
-- `data/generated/score_frames.json`
-- `data/generated/thumbnail.jpg`
+- `notebook/data/generated/standard_pose_templates.json`
+- `notebook/data/generated/score_frames.json`
+- `notebook/data/generated/thumbnail.jpg`
+- `notebook/data/generated/audio.wav`
 
 ## 第二步：启动系统
 
@@ -117,7 +122,7 @@ python rhythm_motion_game.py
 
 ## Notebook 版本
 
-项目附带一份本地可运行的 Jupyter Notebook：`RhythmMotionCV_节奏运动跟随小游戏.ipynb`。
+项目附带一份本地可运行的 Jupyter Notebook：`notebook/RhythmMotionCV_节奏运动跟随小游戏.ipynb`。
 
 Notebook 版本适合做以下事情：
 
@@ -129,4 +134,4 @@ Notebook 版本适合做以下事情：
 
 ## 可调配置
 
-如需修改默认路径、评分阈值、颜色、窗口尺寸、摄像头编号，可在 `config.py` 中统一调整。
+如需修改默认路径、评分阈值、颜色、窗口尺寸、摄像头编号，可在 `app/config.py` 中统一调整。

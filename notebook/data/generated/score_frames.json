@@ -1,6 +1,6 @@
 {
-  "video_path": "E:\\OneDrive\\CV\\cv_Project\\CV_PROJECT\\RhythmMotionCV\\跟练视频.MP4",
-  "thumbnail_path": "E:\\OneDrive\\CV\\cv_Project\\CV_PROJECT\\RhythmMotionCV\\data\\generated\\thumbnail.jpg",
+  "video_path": "跟练视频.MP4",
+  "thumbnail_path": "data/generated/thumbnail.jpg",
   "video_duration_ms": 148133,
   "action_name": "单关卡健康跟练",
   "subtitle": "根据节奏提示完成多段律动动作跟练",

@@ -1,8 +1,8 @@
 {
   // 这不是运行时直接读取的文件，而是给你手工修改时复制参考的模板。
   // 真正要改的是：
-  // 1. data/generated/standard_pose_templates.json
-  // 2. data/generated/score_frames.json
+  // 1. notebook/data/generated/standard_pose_templates.json
+  // 2. notebook/data/generated/score_frames.json
 
   "standard_pose_templates_example": [
     {

@@ -1,11 +1,11 @@
 # standard_pose_templates.json 字段说明与下拉动作排查
 
-这份说明对应文件 data/generated/standard_pose_templates.json。
+这份说明对应文件 notebook/data/generated/standard_pose_templates.json。
 
 先给结论：
 
 1. 这个文件主要决定“拿什么姿态做相似度比对”。
-2. 真正决定“什么时候判分、及格线是多少”的文件是 data/generated/score_frames.json。
+2. 真正决定“什么时候判分、及格线是多少”的文件是 notebook/data/generated/score_frames.json。
 3. 如果下拉动作总不过，最常见的原因通常不是 template_id 写错，而是以下三类问题：
    - 下拉时你的手腕、手肘在摄像头里可见性不够。
    - pull_down 的 template_vector 和你实际做的姿态差得太大。
