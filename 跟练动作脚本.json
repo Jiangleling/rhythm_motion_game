@@ -1,0 +1,12 @@
+[
+  {"start": 8.0, "end": 16.0, "action": "throw", "label": "投掷动作"},
+  {"start": 20.0, "end": 30.0, "action": "pull_down", "label": "下拉动作"},
+  {"start": 35.0, "end": 40.0, "action": "wrist_rotate", "label": "手腕旋转"},
+  {"start": 50.0, "end": 55.0, "action": "knock", "label": "敲击动作"},
+  {"start": 60.0, "end": 65.0, "action": "clap", "label": "鼓掌"},
+  {"start": 76.0, "end": 85.0, "action": "wave", "label": "挥舞动作"},
+  {"start": 90.0, "end": 99.0, "action": "step", "label": "踏步动作"},
+  {"start": 107.0, "end": 112.0, "action": "body_shake", "label": "全身摇动"},
+  {"start": 120.0, "end": 132.0, "action": "wrist_rotate", "label": "手腕旋转"},
+  {"start": 135.0, "end": 147.0, "action": "jump", "label": "跳动"}
+]

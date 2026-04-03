@@ -1,0 +1,96 @@
+{
+  "video_path": "E:\\OneDrive\\CV\\cv_Project\\CV_PROJECT\\RhythmMotionCV\\跟练视频.MP4",
+  "thumbnail_path": "E:\\OneDrive\\CV\\cv_Project\\CV_PROJECT\\RhythmMotionCV\\data\\generated\\thumbnail.jpg",
+  "video_duration_ms": 148133,
+  "action_name": "单关卡健康跟练",
+  "subtitle": "跟随示范动作完成一次稳定、轻量、闭环的姿态训练",
+  "difficulty": "初级",
+  "coach_name": "标准示范视频",
+  "notes": [
+    "保持全身尽量完整出现在镜头中",
+    "动作以标准和稳定为主，不必追求速度",
+    "到达关键得分帧时尽量保持动作到位"
+  ],
+  "keyframes": [
+    {
+      "template_id": "kf_001",
+      "frame_index": 1215,
+      "timestamp_ms": 40500,
+      "action": "wrist_rotate",
+      "label": "手腕旋转",
+      "correction_hint": "手腕旋转的幅度再大一些！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    },
+    {
+      "template_id": "kf_002",
+      "frame_index": 1665,
+      "timestamp_ms": 55500,
+      "action": "knock",
+      "label": "敲击动作",
+      "correction_hint": "敲击动作再有力一些！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    },
+    {
+      "template_id": "kf_003",
+      "frame_index": 2019,
+      "timestamp_ms": 67300,
+      "action": "clap",
+      "label": "鼓掌",
+      "correction_hint": "鼓掌再响亮一些，双手拍合到位！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    },
+    {
+      "template_id": "kf_004",
+      "frame_index": 2715,
+      "timestamp_ms": 90500,
+      "action": "wave",
+      "label": "挥舞动作",
+      "correction_hint": "挥手幅度再大一些！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    },
+    {
+      "template_id": "kf_005",
+      "frame_index": 2829,
+      "timestamp_ms": 94300,
+      "action": "step",
+      "label": "踏步动作",
+      "correction_hint": "踏步动作再有力，抬腿再高一点！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    },
+    {
+      "template_id": "kf_006",
+      "frame_index": 3381,
+      "timestamp_ms": 112700,
+      "action": "body_shake",
+      "label": "全身摇动",
+      "correction_hint": "全身摇摆幅度再大一些！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    },
+    {
+      "template_id": "kf_007",
+      "frame_index": 3780,
+      "timestamp_ms": 126000,
+      "action": "wrist_rotate",
+      "label": "手腕旋转",
+      "correction_hint": "手腕旋转的幅度再大一些！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    },
+    {
+      "template_id": "kf_008",
+      "frame_index": 4230,
+      "timestamp_ms": 141000,
+      "action": "jump",
+      "label": "跳动",
+      "correction_hint": "跳得再高一些，双脚离地！",
+      "pass_threshold": 80,
+      "warn_threshold": 60
+    }
+  ]
+}
