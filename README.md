@@ -55,6 +55,9 @@ jupyter notebook notebook/RhythmMotionCV_节奏运动跟随小游戏.ipynb
 
 Notebook 内置了自动模板生成管线。首次运行时会从示范视频中抽取关键帧，生成姿态模板和评分数据。
 
+train00:https://drive.google.com/file/d/1eSHB2fVwfOz7-c7lUTI14hhPNbFio8Nz/view?usp=drive_link (仅供学习使用，如造成困扰请联系删除)
+train01:https://drive.google.com/file/d/17WHlvbWna5CZX1fa3OtI1X33NQiSF69v/view?usp=drive_link (仅供学习使用，如造成困扰请联系删除)
+
 ## 技术栈
 
 - **MediaPipe** — 姿态关键点检测
