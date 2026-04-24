@@ -1,0 +1,187 @@
+{
+  "video_path": "train00.mp4",
+  "thumbnail_path": "data\\generated\\train00_thumbnail.jpg",
+  "video_duration_ms": 95767,
+  "action_name": "Train00 基础动作跟练",
+  "subtitle": "检测点由 train00.mp4 自动抽取，实时评分与示范视频共用同一时间轴",
+  "difficulty": "中等",
+  "coach_name": "train00 自动模板",
+  "notes": [
+    "检测点根据视频人体动作变化自动抽取，含动作多样性约束。",
+    "可调整 FeatureConfig 与 GenerationConfig 后重新生成模板。",
+    "实时跟练同步 train00.mp4，评分采用余弦+欧氏混合方案。"
+  ],
+  "generation_signature": "75ddd4610c56cd13",
+  "generation_config": {
+    "analysis_stride": 4,
+    "resize_width": 960,
+    "target_keyframes": 15,
+    "min_keyframes": 10,
+    "max_keyframes": 20,
+    "min_gap_seconds": 5.0,
+    "candidate_window_seconds": 2.5,
+    "smoothing_alpha": 0.4,
+    "pose_model_complexity": 1,
+    "detection_confidence": 0.55,
+    "tracking_confidence": 0.55,
+    "pass_threshold": 82,
+    "warn_threshold": 62,
+    "thumbnail_pick_index": 0,
+    "generation_version": "train00_auto_v1",
+    "source_note": "train00.mp4"
+  },
+  "feature_config": {
+    "joint_names": [
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist"
+    ],
+    "joint_weights": {
+      "left_shoulder": 0.9,
+      "right_shoulder": 0.9,
+      "left_elbow": 1.15,
+      "right_elbow": 1.15,
+      "left_wrist": 1.3,
+      "right_wrist": 1.3
+    },
+    "visibility_threshold": 0.45,
+    "min_feature_visibility": 0.55
+  },
+  "keyframes": [
+    {
+      "template_id": "train00_kf_001",
+      "frame_index": 180,
+      "timestamp_ms": 6000,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 1",
+      "correction_hint": "双臂再往上抬高一些，手腕尽量超过头顶",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_002",
+      "frame_index": 448,
+      "timestamp_ms": 14933,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 2",
+      "correction_hint": "双臂再往上抬高一些，手腕尽量超过头顶",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_003",
+      "frame_index": 704,
+      "timestamp_ms": 23466,
+      "action": "right_arm_side",
+      "label": "右臂侧敲 1",
+      "correction_hint": "右臂侧敲动作再明确一些，肘部带动手腕",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_004",
+      "frame_index": 940,
+      "timestamp_ms": 31333,
+      "action": "default",
+      "label": "动作片段 1",
+      "correction_hint": "动作幅度再靠近示范视频，保持姿态稳定",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_005",
+      "frame_index": 1192,
+      "timestamp_ms": 39733,
+      "action": "left_arm_side",
+      "label": "左臂侧敲 1",
+      "correction_hint": "左臂侧敲动作再明确一些，肘部带动手腕",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_006",
+      "frame_index": 1468,
+      "timestamp_ms": 48933,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 3",
+      "correction_hint": "双臂再往上抬高一些，手腕尽量超过头顶",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_007",
+      "frame_index": 1764,
+      "timestamp_ms": 58800,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 4",
+      "correction_hint": "双臂再往上抬高一些，手腕尽量超过头顶",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_008",
+      "frame_index": 2036,
+      "timestamp_ms": 67866,
+      "action": "arms_swing_down",
+      "label": "双臂下甩 1",
+      "correction_hint": "双臂向下甩出再干脆一些，保持对称",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_009",
+      "frame_index": 2192,
+      "timestamp_ms": 73066,
+      "action": "arms_swing_down",
+      "label": "双臂下甩 2",
+      "correction_hint": "双臂向下甩出再干脆一些，保持对称",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_010",
+      "frame_index": 2528,
+      "timestamp_ms": 84266,
+      "action": "arms_swing_down",
+      "label": "双臂下甩 3",
+      "correction_hint": "双臂向下甩出再干脆一些，保持对称",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    },
+    {
+      "template_id": "train00_kf_011",
+      "frame_index": 2692,
+      "timestamp_ms": 89733,
+      "action": "right_arm_swing",
+      "label": "右臂下甩 1",
+      "correction_hint": "右臂向下甩出幅度再大一些，左臂保持稳定",
+      "pass_threshold": 82,
+      "warn_threshold": 62,
+      "template_source": "train00_auto_motion",
+      "template_source_note": "train00.mp4"
+    }
+  ]
+}

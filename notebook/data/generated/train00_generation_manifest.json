@@ -1,0 +1,202 @@
+{
+  "video_path": "train00.mp4",
+  "template_path": "train00_pose_templates.json",
+  "score_frame_path": "train00_score_frames.json",
+  "thumbnail_path": "train00_thumbnail.jpg",
+  "audio_path": "train00_audio.wav",
+  "generation_signature": "75ddd4610c56cd13",
+  "video_meta": {
+    "fps": 30.0,
+    "frame_count": 2873,
+    "duration_ms": 95767,
+    "width": 2560,
+    "height": 1440,
+    "valid_sample_count": 719,
+    "analysis_stride": 4
+  },
+  "generation_config": {
+    "analysis_stride": 4,
+    "resize_width": 960,
+    "target_keyframes": 15,
+    "min_keyframes": 10,
+    "max_keyframes": 20,
+    "min_gap_seconds": 5.0,
+    "candidate_window_seconds": 2.5,
+    "smoothing_alpha": 0.4,
+    "pose_model_complexity": 1,
+    "detection_confidence": 0.55,
+    "tracking_confidence": 0.55,
+    "pass_threshold": 82,
+    "warn_threshold": 62,
+    "thumbnail_pick_index": 0,
+    "generation_version": "train00_auto_v1",
+    "source_note": "train00.mp4"
+  },
+  "feature_config": {
+    "joint_names": [
+      "left_shoulder",
+      "right_shoulder",
+      "left_elbow",
+      "right_elbow",
+      "left_wrist",
+      "right_wrist"
+    ],
+    "joint_weights": {
+      "left_shoulder": 0.9,
+      "right_shoulder": 0.9,
+      "left_elbow": 1.15,
+      "right_elbow": 1.15,
+      "left_wrist": 1.3,
+      "right_wrist": 1.3
+    },
+    "visibility_threshold": 0.45,
+    "min_feature_visibility": 0.55
+  },
+  "keyframe_count": 11,
+  "action_breakdown": {
+    "arms_clap_up": 4,
+    "right_arm_side": 1,
+    "default": 1,
+    "left_arm_side": 1,
+    "arms_swing_down": 3,
+    "right_arm_swing": 1
+  },
+  "audio_status": {
+    "ok": true,
+    "message": "已提取 train00_audio.wav"
+  },
+  "keyframes": [
+    {
+      "template_id": "train00_kf_001",
+      "frame_index": 180,
+      "timestamp_ms": 6000,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 1",
+      "feature_visibility": 0.9897,
+      "motion_score": 1.205973,
+      "turning_score": 0.703846,
+      "pose_score": 1.402903,
+      "composite_score": 0.956137
+    },
+    {
+      "template_id": "train00_kf_002",
+      "frame_index": 448,
+      "timestamp_ms": 14933,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 2",
+      "feature_visibility": 0.9288,
+      "motion_score": 0.853267,
+      "turning_score": 0.848535,
+      "pose_score": 1.485878,
+      "composite_score": 0.801364
+    },
+    {
+      "template_id": "train00_kf_003",
+      "frame_index": 704,
+      "timestamp_ms": 23466,
+      "action": "right_arm_side",
+      "label": "右臂侧敲 1",
+      "feature_visibility": 0.9387,
+      "motion_score": 0.513538,
+      "turning_score": 0.504288,
+      "pose_score": 1.042558,
+      "composite_score": 0.491941
+    },
+    {
+      "template_id": "train00_kf_004",
+      "frame_index": 940,
+      "timestamp_ms": 31333,
+      "action": "default",
+      "label": "动作片段 1",
+      "feature_visibility": 0.9462,
+      "motion_score": 0.789272,
+      "turning_score": 0.78756,
+      "pose_score": 0.805444,
+      "composite_score": 0.627235
+    },
+    {
+      "template_id": "train00_kf_005",
+      "frame_index": 1192,
+      "timestamp_ms": 39733,
+      "action": "left_arm_side",
+      "label": "左臂侧敲 1",
+      "feature_visibility": 0.9242,
+      "motion_score": 0.893841,
+      "turning_score": 0.458843,
+      "pose_score": 0.776558,
+      "composite_score": 0.549563
+    },
+    {
+      "template_id": "train00_kf_006",
+      "frame_index": 1468,
+      "timestamp_ms": 48933,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 3",
+      "feature_visibility": 0.9373,
+      "motion_score": 0.62293,
+      "turning_score": 0.500458,
+      "pose_score": 1.229864,
+      "composite_score": 0.5857
+    },
+    {
+      "template_id": "train00_kf_007",
+      "frame_index": 1764,
+      "timestamp_ms": 58800,
+      "action": "arms_clap_up",
+      "label": "举臂拍手 4",
+      "feature_visibility": 0.9875,
+      "motion_score": 1.02788,
+      "turning_score": 0.718204,
+      "pose_score": 1.204902,
+      "composite_score": 0.904796
+    },
+    {
+      "template_id": "train00_kf_008",
+      "frame_index": 2036,
+      "timestamp_ms": 67866,
+      "action": "arms_swing_down",
+      "label": "双臂下甩 1",
+      "feature_visibility": 0.9172,
+      "motion_score": 0.874242,
+      "turning_score": 0.683652,
+      "pose_score": 1.796969,
+      "composite_score": 0.813243
+    },
+    {
+      "template_id": "train00_kf_009",
+      "frame_index": 2192,
+      "timestamp_ms": 73066,
+      "action": "arms_swing_down",
+      "label": "双臂下甩 2",
+      "feature_visibility": 0.9587,
+      "motion_score": 1.008511,
+      "turning_score": 0.622737,
+      "pose_score": 1.46026,
+      "composite_score": 0.917143
+    },
+    {
+      "template_id": "train00_kf_010",
+      "frame_index": 2528,
+      "timestamp_ms": 84266,
+      "action": "arms_swing_down",
+      "label": "双臂下甩 3",
+      "feature_visibility": 0.9672,
+      "motion_score": 0.72067,
+      "turning_score": 0.655021,
+      "pose_score": 1.682473,
+      "composite_score": 0.830138
+    },
+    {
+      "template_id": "train00_kf_011",
+      "frame_index": 2692,
+      "timestamp_ms": 89733,
+      "action": "right_arm_swing",
+      "label": "右臂下甩 1",
+      "feature_visibility": 0.9668,
+      "motion_score": 0.706204,
+      "turning_score": 0.635555,
+      "pose_score": 1.432454,
+      "composite_score": 0.786579
+    }
+  ]
+}
