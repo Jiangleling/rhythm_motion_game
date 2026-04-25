@@ -2,6 +2,8 @@
 
 基于计算机视觉的节奏运动跟随小游戏，使用 **MediaPipe** + **OpenCV** 实时捕捉人体姿态，与示范视频中的动作模板进行评分比对。
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Jiangleling/rhythm_motion_game)
+
 ## 项目结构
 
 ```
